@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   ScreenName,
   useNavigation,
@@ -72,76 +72,68 @@ export const AddNotes = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(35, 40, 48, 1)',
-        }}>
-        <TouchableOpacity onPress={handleBack} style={styles.back_btn}>
-          <Image source={require('../../assets/images/icons/back_icon.png')} />
-          <Text style={styles.inputs_name}>New note</Text>
-        </TouchableOpacity>
-        <SafeAreaView style={styles.inputs_block}>
-          <Text style={styles.inputs_name}>Name of note</Text>
-          <SafeAreaView style={styles.inputs}>
-            <TextInput
-              placeholder="Enter your name"
-              placeholderTextColor="rgba(153, 153, 153, 1)"
-              value={name}
-              onChangeText={setName}
-            />
-          </SafeAreaView>
+      <TouchableOpacity onPress={handleBack} style={styles.back_btn}>
+        <Image source={require('../../assets/images/icons/back_icon.png')} />
+        <Text style={styles.inputs_name}>New note</Text>
+      </TouchableOpacity>
+      <SafeAreaView style={styles.inputs_block}>
+        <Text style={styles.inputs_name}>Name of note</Text>
+        <SafeAreaView style={styles.inputs}>
+          <TextInput
+            placeholder="Enter your name"
+            placeholderTextColor="rgba(153, 153, 153, 1)"
+            value={name}
+            onChangeText={setName}
+          />
+        </SafeAreaView>
+      </SafeAreaView>
+      <SafeAreaView style={styles.inputs_block}>
+        <Text style={styles.inputs_name}>Description</Text>
+        <SafeAreaView style={[styles.inputs, {height: 128}]}>
+          <TextInput
+            placeholder="Tell us about yourself"
+            placeholderTextColor="rgba(153, 153, 153, 1)"
+            value={description}
+            onChangeText={setDescription}
+            multiline
+          />
         </SafeAreaView>
         <SafeAreaView style={styles.inputs_block}>
           <Text style={styles.inputs_name}>Description</Text>
-          <SafeAreaView style={[styles.inputs, {height: 128}]}>
-            <TextInput
-              placeholder="Tell us about yourself"
-              placeholderTextColor="rgba(153, 153, 153, 1)"
-              value={description}
-              onChangeText={setDescription}
-              multiline
-            />
-          </SafeAreaView>
-          <SafeAreaView style={styles.inputs_block}>
-            <Text style={styles.inputs_name}>Description</Text>
-            <TouchableOpacity onPress={pickImage} style={styles.addPhoto}>
-              {photo ? (
-                <Image source={{uri: photo}} style={styles.addPhoto} />
-              ) : (
-                <Image
-                  source={require('../../assets/images/icons/add_photo_profile.png')}
-                />
-              )}
-            </TouchableOpacity>
-          </SafeAreaView>
+          <TouchableOpacity onPress={pickImage} style={styles.addPhoto}>
+            {photo ? (
+              <Image source={{uri: photo}} style={styles.addPhoto} />
+            ) : (
+              <Image
+                source={require('../../assets/images/icons/add_photo_profile.png')}
+              />
+            )}
+          </TouchableOpacity>
         </SafeAreaView>
-        <TouchableOpacity
-          onPress={handleNext}
-          disabled={!isSaveEnabled}
+      </SafeAreaView>
+      <TouchableOpacity
+        onPress={handleNext}
+        disabled={!isSaveEnabled}
+        style={[
+          styles.next,
+          {
+            backgroundColor: isSaveEnabled
+              ? 'rgba(123, 3, 11, 1)'
+              : 'rgba(54, 62, 75, 1)',
+          },
+        ]}>
+        <Text
           style={[
-            styles.next,
+            styles.next_text,
             {
-              backgroundColor: isSaveEnabled
-                ? 'rgba(123, 3, 11, 1)'
-                : 'rgba(54, 62, 75, 1)',
+              color: isSaveEnabled
+                ? 'rgba(255, 255, 255, 1)'
+                : 'rgba(153, 153, 153, 1)',
             },
           ]}>
-          <Text
-            style={[
-              styles.next_text,
-              {
-                color: isSaveEnabled
-                  ? 'rgba(255, 255, 255, 1)'
-                  : 'rgba(153, 153, 153, 1)',
-              },
-            ]}>
-            Next
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
+          Next
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

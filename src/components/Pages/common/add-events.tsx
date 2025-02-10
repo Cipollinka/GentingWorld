@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {
-  Image, SafeAreaView,
+  Image,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  View
-} from "react-native";
+  View,
+} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {
   ScreenName,
@@ -24,6 +24,9 @@ export const AddEvents = () => {
   const [finishDate, setFinishDate] = useState('');
   const [coverImage, setCoverImage] = useState(null);
   const [photos, setPhotos] = useState([]);
+  const handleBack = () => {
+    navigation.navigate(ScreenName.Main);
+  };
 
   const selectImage = (
     setImage: (value: ((prevState: null) => null) | null) => void,
@@ -61,11 +64,13 @@ export const AddEvents = () => {
     navigation.navigate(ScreenName.Main); // Переходимо на головний екран
   };
   return (
-    <SafeAreaView style={{flex: 1, width: '100%', height: '100%', backgroundColor: 'rgba(35, 40, 48, 1)'}}>
     <ScrollView style={{flex: 1, backgroundColor: '#232830', padding: 20}}>
-      <Text style={{color: 'white', fontSize: 18, marginBottom: 10}}>
-        Add new events
-      </Text>
+      <TouchableOpacity onPress={handleBack} style={{gap: 10, flexDirection: 'row'}}>
+        <Image source={require('../../../assets/images/icons/back_icon.png')} />
+        <Text style={{color: 'white', fontSize: 18, marginBottom: 10}}>
+          Add new event
+        </Text>
+      </TouchableOpacity>
       <View style={{gap: 15}}>
         <TextInput
           placeholder="Task name"
@@ -170,6 +175,5 @@ export const AddEvents = () => {
         <Text style={{color: 'white', fontSize: 16}}>Next</Text>
       </TouchableOpacity>
     </ScrollView>
-    </SafeAreaView>
   );
 };

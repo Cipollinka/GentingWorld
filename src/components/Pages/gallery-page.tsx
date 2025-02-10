@@ -112,7 +112,7 @@ export const Gallery: React.FC = () => {
       </View>
 
       {/* Список фото за датами */}
-      <View style={{height: 430,}}>
+      <View style={{height: 430}}>
         <FlatList
           ref={flatListRef} // Прив'язуємо реф
           data={Array.from(photosByDate.entries())} // Конвертуємо Map в масив для FlatList

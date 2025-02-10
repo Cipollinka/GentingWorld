@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -31,6 +30,10 @@ export const OneFlights = () => {
   const [comment, setComment] = useState('');
   const [passengers, setPassengers] = useState(2);
   const [selectedClass, setSelectedClass] = useState('Economy');
+
+  const handleBack = () => {
+    navigation.navigate(ScreenName.Main);
+  };
 
   const handlePassengerChange = (type: string) => {
     setPassengers(prev =>
@@ -102,77 +105,75 @@ export const OneFlights = () => {
 
   return (
     <View style={styles.bg}>
-      <SafeAreaView style={{flex: 1, width: '100%', height: '100%'}}>
-        <View style={{gap: 20}}>
-          <TouchableOpacity style={{gap: 10, flexDirection: 'row'}}>
-            <Image
-              source={require('../../../assets/images/icons/back_icon.png')}
-            />
-            <Text style={styles.title}>Add a flight</Text>
-          </TouchableOpacity>
-          <View style={{gap: 8}}>
-            <Text style={styles.label}> The point of departure</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Task name"
-              placeholderTextColor="rgba(153, 153, 153, 1)"
-              value={departure}
-              onChangeText={setDeparture}
-            />
-          </View>
-          <View style={{gap: 8}}>
-            <Text style={styles.label}>Point of arrival</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Task name"
-              placeholderTextColor="rgba(153, 153, 153, 1)"
-              value={arrival}
-              onChangeText={setArrival}
-            />
-          </View>
-          <View style={styles.passengerContainer}>
-            <Text style={styles.label}>Passengers</Text>
-            <View style={styles.passengerControls}>
-              <TouchableOpacity
-                onPress={() => handlePassengerChange('decrease')}
-                style={styles.passengerButton}>
-                <Text style={styles.passengerText}>-</Text>
-              </TouchableOpacity>
-              <Text style={styles.passengerCount}>{passengers}</Text>
-              <TouchableOpacity
-                onPress={() => handlePassengerChange('increase')}
-                style={styles.passengerButton}>
-                <Text style={styles.passengerText}>+</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.classContainer}>
-            <Text style={styles.label}>Class</Text>
-            <View style={{flexDirection: 'row', gap: 12}}>
-              {['Economy', 'Standart', 'Business'].map(flightClass => (
-                <TouchableOpacity
-                  key={flightClass}
-                  onPress={() => handleClassSelection(flightClass)}
-                  style={[
-                    styles.classButton,
-                    selectedClass === flightClass && styles.selectedClass,
-                  ]}>
-                  <Text style={styles.classText}>{flightClass}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
+      <View style={{gap: 20}}>
+        <TouchableOpacity onPress={handleBack} style={{gap: 10, flexDirection: 'row'}}>
+          <Image
+            source={require('../../../assets/images/icons/back_icon.png')}
+          />
+          <Text style={styles.title}>Add a flight</Text>
+        </TouchableOpacity>
+        <View style={{gap: 8}}>
+          <Text style={styles.label}> The point of departure</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Task name"
+            placeholderTextColor="rgba(153, 153, 153, 1)"
+            value={departure}
+            onChangeText={setDeparture}
+          />
+        </View>
+        <View style={{gap: 8}}>
+          <Text style={styles.label}>Point of arrival</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Task name"
+            placeholderTextColor="rgba(153, 153, 153, 1)"
+            value={arrival}
+            onChangeText={setArrival}
+          />
+        </View>
+        <View style={styles.passengerContainer}>
+          <Text style={styles.label}>Passengers</Text>
+          <View style={styles.passengerControls}>
+            <TouchableOpacity
+              onPress={() => handlePassengerChange('decrease')}
+              style={styles.passengerButton}>
+              <Text style={styles.passengerText}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.passengerCount}>{passengers}</Text>
+            <TouchableOpacity
+              onPress={() => handlePassengerChange('increase')}
+              style={styles.passengerButton}>
+              <Text style={styles.passengerText}>+</Text>
+            </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => handleNext('two')}
-          style={[
-            styles.nextButton,
-            departure && arrival ? styles.activeButton : styles.disabledButton,
-          ]}
-          disabled={!departure || !arrival}>
-          <Text style={styles.nextButtonText}>Next</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
+        <View style={styles.classContainer}>
+          <Text style={styles.label}>Class</Text>
+          <View style={{flexDirection: 'row', gap: 12}}>
+            {['Economy', 'Standart', 'Business'].map(flightClass => (
+              <TouchableOpacity
+                key={flightClass}
+                onPress={() => handleClassSelection(flightClass)}
+                style={[
+                  styles.classButton,
+                  selectedClass === flightClass && styles.selectedClass,
+                ]}>
+                <Text style={styles.classText}>{flightClass}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </View>
+      <TouchableOpacity
+        onPress={() => handleNext('two')}
+        style={[
+          styles.nextButton,
+          departure && arrival ? styles.activeButton : styles.disabledButton,
+        ]}
+        disabled={!departure || !arrival}>
+        <Text style={styles.nextButtonText}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };

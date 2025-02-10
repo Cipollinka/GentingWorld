@@ -1,18 +1,17 @@
 import {
   Image,
-  ImageBackground, SafeAreaView,
+  ImageBackground,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
-} from "react-native";
+  View,
+} from 'react-native';
 import {useUser} from '../../../assets/user';
 import {
   ScreenName,
   useNavigation,
 } from '../../../assets/user/lib/hooks/use-navigation.tsx';
-import React from "react";
 
 export const Added = () => {
   const navigation = useNavigation();
@@ -30,7 +29,6 @@ export const Added = () => {
 
   return (
     <View>
-      <SafeAreaView style={{flex: 1, width: '100%', height: '100%', backgroundColor: 'rgba(35, 40, 48, 1)'}}>
       {user?.location && user.location.length > 0 ? (
         <View style={styles.scrollContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -77,7 +75,6 @@ export const Added = () => {
           </Text>
         </View>
       )}
-      </SafeAreaView>
     </View>
   );
 };

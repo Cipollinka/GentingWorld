@@ -1,13 +1,13 @@
 import {
-  Image, Linking,
+  Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
-} from "react-native";
+  View,
+} from 'react-native';
 import {useUser} from '../../assets/user';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useEffect, useState} from 'react';
@@ -163,7 +163,7 @@ export const Profile = () => {
           <View style={{padding: 20}}>
             {menuItems.map((item, index) => (
               <TouchableOpacity
-                onPress={() => Linking.openURL('https://www.termsfeed.com/live/fabfb3b1-3998-4261-b99f-0c53cc0f1979')}
+                onPress={() => console.log(user?.profile)}
                 key={index}
                 style={{
                   width: 350,

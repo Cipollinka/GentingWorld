@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   ScreenName,
   useNavigation,
@@ -75,7 +75,6 @@ export const AddLocation = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{flex: 1, width: '100%', height: '100%', backgroundColor: 'rgba(35, 40, 48, 1)'}}>
       <TouchableOpacity onPress={handleBack} style={styles.back_btn}>
         <Image source={require('../../assets/images/icons/back_icon.png')} />
         <Text style={styles.inputs_name}>New note</Text>
@@ -148,7 +147,6 @@ export const AddLocation = () => {
           Next
         </Text>
       </TouchableOpacity>
-      </SafeAreaView>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, View} from 'react-native';
 import {Footer} from './footer-component.tsx';
 import {useState} from 'react';
 import {Home} from '../Pages/home-page.tsx';
@@ -28,10 +28,8 @@ export const Main = () => {
   };
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{flex: 1, width: '100%', height: '100%'}}>
-        <View>{renderPage()}</View>
-        <Footer setPage={setPage} page={page} />
-      </SafeAreaView>
+      <View>{renderPage()}</View>
+      <Footer setPage={setPage} page={page} />
     </View>
   );
 };

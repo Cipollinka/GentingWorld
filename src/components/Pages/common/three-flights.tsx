@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from "react-native";
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 interface ThreeFlightsProps {
   next: (nameScreen: string) => void;
@@ -24,7 +24,6 @@ export const ThreeFlights = ({
         padding: 20,
         justifyContent: 'space-between',
       }}>
-      <SafeAreaView style={{flex:1, width:'100%', height: '100%'}}>
       <View style={{gap: 20}}>
         <Text style={{color: 'white', fontSize: 18, marginBottom: 10}}>
           Add a flight
@@ -94,7 +93,6 @@ export const ThreeFlights = ({
         }}>
         <Text style={{color: 'white', fontSize: 16}}>Next</Text>
       </TouchableOpacity>
-      </SafeAreaView>
     </View>
   );
 };
